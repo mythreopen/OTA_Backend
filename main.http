@@ -1,0 +1,12 @@
+###
+POST http://127.0.0.1:8000/api/v2/reports/get_weekly
+content-type: application/json
+
+{
+    "report_type": "AccessionTrackerReport"
+}
+###
+# Get Dataframe info
+###
+
+GET http://127.0.0.1:8000/api/v2/reports/get_shifts
