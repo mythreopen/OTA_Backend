@@ -61,10 +61,20 @@ Currently the active routes we have are:
    - Description:
 
       Returns JSON containing a Bool and an ATR Object containing the following columns:
-        
-        -
-        
-        -
+
+        ```json
+        "success": true,
+        "data": {
+          {
+            "AccessionDate": ..., # Per Day
+            "Hour": ...,          # Hour Per Day
+            "Count": ...          # Total Per Hour Per Hour Day
+          },
+          {
+            "AccessionDate": "02-04-2022", "Hour": 23, "Count": 5
+          }
+        }
+        ```
 
    - Server: `URL = ServerURL + '/reports/get_weekly'`
 
@@ -88,6 +98,28 @@ Currently the active routes we have are:
 
 ### Reports and their data models
 
-ATR - 
+- ATR
 
-Shifts
+| Name              | DType            | Description                                                                                                                                                                                                                                                                                                                                  |
+|-------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AccessionNumber   | String           | May contain numbers but also specific Lab areas (i.e. xyz-1234, abc-4567, etc.)                                                                                                                                                                                                                                                              |
+| RequisitionNumber | String           | Contains both string and numbers                                                                                                                                                                                                                                                                                                             |
+| CaseType          | String           |                                                                                                                                                                                                                                                                                                                                              |
+| CollectionDate    | Date             |                                                                                                                                                                                                                                                                                                                                              |
+| OrderingPhysician | String           |                                                                                                                                                                                                                                                                                                                                              |
+| OrderingFacility  | String           |                                                                                                                                                                                                                                                                                                                                              |
+| OrderingLocation  | String           |                                                                                                                                                                                                                                                                                                                                              |
+| AccessionerName   | String           | Something to keep in mind for the names and the munging process is to make sure they are both following a standard that ensures a FName + LName format or an equivalent. If we compare by shift names, the shifts are formatted as Title + FName, LName and ensure that the name itself is in proper format AND fname + lname compatibility. |
+| AccessionMonth    | Date -> Obj(str) | Even though the Date format is in %B-%Y, I prefer to keep it as a string due to using this to handle file data                                                                                                                                                                                                                               |
+| MonthRange        | Date -> Obj(str) |                                                                                                                                                                                                                                                                                                                                              |
+| WeekRange         | String           |                                                                                                                                                                                                                                                                                                                                              |
+| AccessionDate     | Date             | The meat and sauce of the ATReports, we use this as a functional pivot point to handle the requests, responses, and data manipulation/visualization.                                                                                                                                                                                         |
+| Hour              | Int64            |                                                                                                                                                                                                                                                                                                                                              |
+| RackLocation      | String           |
+| 'EMR #'           | String           | When adding to SQL Tables, the table may not able to read the special character which will cause confusion and problems|
+
+- Shifts
+
+| Name            | FirstShift | SecondShift | ThirdShift |
+|-----------------|------------|-------------|------------|
+| AccessionerName | String     | String      | String     |
