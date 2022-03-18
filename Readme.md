@@ -1,4 +1,4 @@
-# Open Tron Analytics Backend
+# Opentrons Analytics Backend
 
 Link for [Github](https://github.com/mythreopen/OTA_Backend)
 
