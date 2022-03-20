@@ -14,7 +14,7 @@ def local_dir_check():
     data_dirs = [
         "AccessionTrackerReport",
         "TATReport",
-        "ProblemTrackerReport"
+        "ProblemTrackerReport",
         "Shift"
     ]
 

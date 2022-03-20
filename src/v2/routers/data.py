@@ -52,7 +52,6 @@ async def create_file(req: Request):
         # Extract data from json and convert it
         # to a workable format.
         extraction = data_controller.extract_upload_data(json)
-        # print("EXTRACTION DATA: ", extraction)
 
         # Convert the data to a dataframe structure
         df = pd.DataFrame(extraction["data"])
